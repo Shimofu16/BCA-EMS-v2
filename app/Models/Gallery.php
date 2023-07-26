@@ -15,4 +15,5 @@ class Gallery extends Model
     {
         return $this->hasMany(Photo::class);
     }
+    
 }

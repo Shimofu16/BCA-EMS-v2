@@ -11,7 +11,7 @@
                     <div class="card-header text-center bg-blue text-white p-3 mb-3 shadow">
                         <h2 class="py-3 text-capitalize">BCA Online Enrollment Form</h2>
                     </div>
-                    @livewire('enrollment.form')
+                    @livewire('frontend.enrollment-form')
                 </div>
             </div>
         </div>

@@ -24,7 +24,8 @@ class DatabaseSeeder extends Seeder
             SchoolYearSeeder::class,
             TeacherSeeder::class,
             SectionSeeder::class,
-            StudentSeeder::class,
+            LevelSeeder::class,
+            AnnualSeeder::class,
             RoleSeeder::class,
             UserSeeder::class,
         ]);

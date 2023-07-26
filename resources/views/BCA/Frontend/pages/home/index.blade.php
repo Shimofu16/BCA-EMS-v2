@@ -32,56 +32,26 @@
     </section>
     <section class="bg-blue">
         <div class="container">
-            <div class="row py-5">
-                <div class="col-auto">
+            <div class="row p-5">
+                <div class="col-auto ms-auto">
                     <iframe
                         src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FBreakthroughChristianAcademy%2Fvideos%2F1179801739398768%2F&show_text=false&width=560&t=0"style="border:none;" scrolling="no" frameborder="5" allowfullscreen="true"
                         allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                         allowFullScreen="true" class="w-100 mh-100 overflow-hidden"></iframe>
                 </div>
-                <div class="col-auto">
+                <div class="col-auto me-auto">
                     <div class="d-flex flex-column text-center text-white py-3" style="max-width: 560px;">
                         <h4>Welcome to BCA!</h4>
                         <span>Breakthrough Christian Academy, Inc. is a private educational institution in Quezon City,
                             dedicated to providing quality education and breaking the cycle of poverty through
                             faith-based learning.</span>
+                        <a href="{{ route('about.history.index') }}" class="btn btn-sm btn-outline-light mx-auto mt-2">Read more.</a>
                     </div>
                 </div>
 
 
             </div>
-            {{-- <div class="row my-3 justify-content-between align-items-center">
-                <div class="col-auto">
-                    <h1>Featured Videos</h1>
-                </div>
-                <div class="col-auto">
-                    <div class="d-flex justify-content-end">
-                        <a href="https://www.facebook.com/BreakthroughChristianAcademy/videos"
-                            class="btn btn-outline-bca">More
-                            Videos</a>
 
-                    </div>
-                </div>
-            </div>
-            <div class="row g-3" id="featured-videos">
-                <div class="col-sm-4">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <div class="fb-video" data-href="https://fb.watch/fT_SUEBxpf/" data-show-text="false">
-                                <blockquote
-                                    cite="https://www.facebook.com/BreakthroughChristianAcademy/videos/383440052882981/"
-                                    class="fb-xfbml-parse-ignore"><a
-                                        href="https://www.facebook.com/BreakthroughChristianAcademy/videos/383440052882981/">Breakthrough
-                                        Choir: Mary&#039;s Born Child</a>
-                                    <p>Breakthrough Choir: Mary&#039;s Born Child</p>Posted by <a
-                                        href="https://facebook.com/BreakthroughChristianAcademy">Breakthrough Christian
-                                        Academy</a> on Thursday, December 24, 2020
-                                </blockquote>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
         </div>
     </section>
     <section class="py-3">
