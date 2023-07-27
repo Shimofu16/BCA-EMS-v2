@@ -5,7 +5,7 @@
 @section('contents')
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-        <a href="{{ route('admin.manage.backups.backup') }}" class="d-none d-sm-inline-block btn btn-outline-primary shadow-sm"><i class="fas fa-download fa-sm"></i> Generate Backup</a>
+        <a href="{{ route('admin.manage.backups.generate') }}" class="d-none d-sm-inline-block btn btn-outline-primary shadow-sm"><i class="fas fa-download fa-sm"></i> Generate Backup</a>
     </div>
     <div class="row">
         <!-- Earnings (Monthly) Card Example -->

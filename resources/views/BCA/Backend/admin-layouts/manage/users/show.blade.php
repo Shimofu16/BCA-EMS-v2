@@ -1,6 +1,6 @@
 @extends('BCA.Backend.admin-layouts.index')
 @section('page-title')
-        {{ $user->getName() }}
+        {{ $user->getFullName() }}
 @endsection
 @section('contents')
     <div class="row shadow-sm bg-white rounded align-items-center justify-content-between mb-3">

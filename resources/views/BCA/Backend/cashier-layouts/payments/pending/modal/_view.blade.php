@@ -55,7 +55,7 @@
                             $level = 6;
                             break;
                     }
-                    $fees = \App\Models\Cashier\Payment\Annual::where('level_id', '=', $level)
+                    $fees = \App\Models\Annual::where('level_id', '=', $level)
                         ->where('sy_id', '=', $payment->student->sy_id)
                         ->orderBy('fee_type', 'asc')
                         ->get();

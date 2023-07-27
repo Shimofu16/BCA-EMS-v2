@@ -2,9 +2,9 @@
 
 namespace App\Exports;
 
-use App\Models\UserLog;
-use App\Models\UserLogs;
-use Maatwebsite\Excel\Concerns\FromCollection;
+
+use App\Models\ActivityLog;
+use  Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
@@ -22,7 +22,7 @@ class UserLogExport implements FromCollection, WithHeadings, WithMapping, WithTi
     public function collection()
     {
         // Retrieve the data from the database or any other source
-        return UserLogs::all();
+        return ActivityLog::all();
     }
 
     public function headings(): array

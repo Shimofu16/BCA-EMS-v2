@@ -72,7 +72,7 @@
                         Grade:
                     </td>
                     <td colspan="5" class="border-bottom">
-                        <span class="fw-normal text-uppercase">{{ $student->gradeLevel->grade_name }}</span>
+                        <span class="fw-normal text-uppercase">{{ $student->gradeLevel->name }}</span>
                     </td>
                 </tr>
                 <tr>

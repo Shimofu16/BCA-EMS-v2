@@ -27,7 +27,7 @@
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             @foreach ($gradeLevels as $level)
                                 <a class="dropdown-item {{ request()->level_id == $level->id ? 'active' : '' }}"
-                                    href="{{ route('cashier.payment.balance.index', ['level_id' => $level->id]) }}">{{ $level->grade_name }}</a>
+                                    href="{{ route('cashier.payment.balance.index', ['level_id' => $level->id]) }}">{{ $level->display_name }}</a>
                             @endforeach
                         </div>
                     </div>

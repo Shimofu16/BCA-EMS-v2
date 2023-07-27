@@ -7,7 +7,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-             @livewire('admin.users.create',)
+             @livewire('backend.admin.add-user',)
         </div>
     </div>
 </div>

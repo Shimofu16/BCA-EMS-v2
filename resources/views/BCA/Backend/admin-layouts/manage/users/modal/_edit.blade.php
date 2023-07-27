@@ -7,7 +7,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            @livewire('admin.users.edit',['user' => $user])
+            @livewire('backend.admin.edit-user',['user' => $user])
         </div>
     </div>
 </div>

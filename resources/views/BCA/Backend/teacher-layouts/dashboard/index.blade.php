@@ -50,16 +50,14 @@
                                     </tr>
                                 @endforelse
                             </tbody>
-                            @if (!empty($schedules->first()))
                                 <tfoot>
                                     <tr>
                                         <th colspan="4" style="text-align: end;">
                                             <a href="{{ route('export.class.schedule', ['id' => Auth::user()->teacher_id, 'isStudent' => 0]) }}"
-                                                class="btn btn-primary btn-sm">Download</a>
+                                                class="btn btn-primary btn-sm {{  ($schedules->count() > 0) ? '' : 'disabled' ; }}">Download</a>
                                         </th>
                                     </tr>
                                 </tfoot>
-                            @endif
                         </table>
                     </div>
                 </div>

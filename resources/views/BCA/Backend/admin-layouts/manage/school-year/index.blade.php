@@ -1,6 +1,6 @@
 @extends('BCA.Backend.admin-layouts.index')
 @section('page-title')
-    Photo Gallery
+    School Year
 @endsection
 @section('contents')
     <div class="row shadow-sm bg-white rounded  align-items-center mb-3">
@@ -10,7 +10,7 @@
         <div class="col">
             <div class="d-flex justify-content-end">
                 <button class="btn btn-outline-primary" data-toggle="modal" data-target="#add">
-                    <span class="d-flex align-items-center"><i class="fas fa-plus-circle"></i>&#160; Add Photo</span>
+                    <span class="d-flex align-items-center"><i class="fas fa-plus-circle"></i>&#160; Add School Year</span>
                 </button>
                 @include('BCA.Backend.admin-layouts.manage.school-year.modal._add')
             </div>
@@ -37,7 +37,7 @@
                                     {{ $sy->name }}
                                 </td>
                                 <td>
-                                    Start at {{ $sy->start_date }} end at {{ $sy->end_date }}
+                                    Start at {{ date('F d, Y', strtotime($sy->start_date)) }} end at {{ date('F d, Y', strtotime($sy->end_date)) }}
                                 </td>
                                 <td>
                                     <div class="d-flex justify-content-center align-items-center">

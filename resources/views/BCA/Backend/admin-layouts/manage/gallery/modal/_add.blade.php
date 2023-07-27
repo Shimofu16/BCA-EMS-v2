@@ -9,7 +9,7 @@
                 </button>
             </div>
 
-            @livewire('admin.gallery.add',)
+            @livewire('backend.admin.add-photo',)
         </div>
     </div>
 </div>

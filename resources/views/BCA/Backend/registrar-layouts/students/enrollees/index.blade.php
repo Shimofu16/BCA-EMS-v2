@@ -26,7 +26,7 @@
                         <div class="dropdown-menu shadow" aria-labelledby="dropdownMenuButton">
                             @foreach ($gradeLevels as $level)
                                 <a class="dropdown-item {{ request()->level_id == $level->id ? 'active' : '' }}"
-                                    href="{{ route('registrar.enrollees.index', ['level_id' => $level->id]) }}">{{ $level->grade_name }}
+                                    href="{{ route('registrar.enrollees.index', ['level_id' => $level->id]) }}">{{ $level->display_name }}
                                 </a>
                             @endforeach
                         </div>
@@ -62,7 +62,7 @@
                                 </td>
                                 <td>{{ $student->gender }}</td>
                                 <td>{{ $student->age }}</td>
-                                <td>{{ $student->gradeLevel->grade_name }}</td>
+                                <td>{{ $student->gradeLevel->name }}</td>
                                 <td>
                                     <div class="d-flex justify-content-center">
                                         <button type="submit" class="btn btn-outline-success btn-sm mr-1"

@@ -32,31 +32,7 @@
                     <i class="fa-solid fa-repeat"></i>
                     <span>{{ Auth::user()->first->name }} Dashboard</span></a>
             </li>
-        @endif
-        <!-- Heading -->
-        <div class="sidebar-heading">
-            Manage Users
-        </div>
-
-
-        <!-- Nav Item - Users Collapse Menu -->
-        <li class="nav-item {{ Request::routeIs('admin.manage.user.*') ? 'active' : '' }}">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne"
-                aria-expanded="true" aria-controls="collapseOne">
-                <i class="fa fa-users" aria-hidden="true"></i>
-                <span>Users</span></a>
-            </a>
-            <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item mb-1 {{ Request::routeIs('admin.manage.user.index') ? 'active-collapse-item' : '' }}"
-                        href="{{ route('admin.manage.user.index', ['type' => 'faculty']) }}">Faculty</a>
-                    <a class="collapse-item mb-1 {{ Request::routeIs('admin.manage.user.index') ? 'active-collapse-item' : '' }}"
-                        href="{{ route('admin.manage.user.index', ['type' => 'student']) }}">Students</a>
-                </div>
-            </div>
-        </li>
-        <hr class="sidebar-divider">
-        <!-- Heading -->
+        @endif      
 
         <div class="sidebar-heading">
             Manage Website
@@ -79,6 +55,11 @@
                 <span>Photo Gallery</span>
             </a>
         </li>
+        <li class="nav-item {{ Request::routeIs('admin.account.index') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.account.index') }}">
+                <i class="fa fa-bank" aria-hidden="true"></i>
+                <span>Bank Accounts</span></a>
+        </li>
 
         <!-- Nav Item - Teachers Collapse Me -->
         <hr class="sidebar-divider">
@@ -87,16 +68,12 @@
         <div class="sidebar-heading">
             Manage Database
         </div>
-        <li class="nav-item {{ Request::routeIs('admin.manage.backups.show') ? 'active' : '' }}">
-            <a class="nav-link" href="{{ route('admin.manage.backups.show', ['date' => now()]) }}">
+        <li class="nav-item {{ Request::routeIs('admin.manage.backups.index') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.manage.backups.index', ['date' => now()]) }}">
                 <i class="fa-solid fa-database"></i>
                 <span>Backups</span></a>
         </li>
-        <li class="nav-item {{ Request::routeIs('admin.account.index') ? 'active' : '' }}">
-            <a class="nav-link" href="{{ route('admin.account.index') }}">
-                <i class="fa fa-bank" aria-hidden="true"></i>
-                <span>Bank Accounts</span></a>
-        </li>
+
 
         <li class="nav-item {{ Request::routeIs('admin.manage.grades.index') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.manage.grades.index') }}">
@@ -109,6 +86,21 @@
                 <i class="fa-solid fa-school"></i>
                 <span>School Year</span>
             </a>
+        </li>
+        <li class="nav-item {{ Request::routeIs('admin.manage.user.*') ? 'active' : '' }}">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne"
+                aria-expanded="true" aria-controls="collapseOne">
+                <i class="fa fa-users" aria-hidden="true"></i>
+                <span>Users</span></a>
+            </a>
+            <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item mb-1 {{ Request::is('admin/user/faculty') ? 'active-collapse-item' : '' }}"
+                        href="{{ route('admin.manage.user.index', ['type' => 'faculty']) }}">Faculty</a>
+                    <a class="collapse-item mb-1 {{ Request::is('admin/user/student') ? 'active-collapse-item' : '' }}"
+                        href="{{ route('admin.manage.user.index', ['type' => 'student']) }}">Students</a>
+                </div>
+            </div>
         </li>
         <hr class="sidebar-divider">
         <!-- Heading -->

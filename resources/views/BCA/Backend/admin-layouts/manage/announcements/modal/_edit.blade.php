@@ -52,12 +52,12 @@
                     <div class="form-group" id="gradelevel">
                         <label for="gl" class="font-weight-bold">Grade Level</label>
                         <select class="form-control @error('gl') is-invalid @enderror" name="gl" id="gl">
-                            <option value="{{ $announcement->gradeLevel->grade_name != null ? $announcement->gradeLevel->id : 'Select Grade Level' }}" selected disabled>
-                                {{ $announcement->gradeLevel->grade_name != null ? $announcement->gradeLevel->grade_name : 'Select Grade Level' }}
+                            <option value="{{ $announcement->gradeLevel->name != null ? $announcement->gradeLevel->id : 'Select Grade Level' }}" selected disabled>
+                                {{ $announcement->gradeLevel->name != null ? $announcement->gradeLevel->name : 'Select Grade Level' }}
                             </option>
                             @forelse ($levels as $level)
                                 @if ($announcement->grade_level_id != $level->id)
-                                    <option value="{{ $level->id }}">{{ $level->grade_name }}</option>
+                                    <option value="{{ $level->id }}">{{ $level->display_name }}</option>
                                 @endif
                             @empty
                                 <option>No Data Available</option>

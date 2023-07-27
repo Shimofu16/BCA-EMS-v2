@@ -28,7 +28,7 @@
                         <select class="custom-select @error('grade_level_id') is-invalid @enderror" id="inputGroupSelect01" name="grade_level_id" required>
                             <option selected value="">-- Select Grade Level --</option>
                             @foreach ($gradeLevels as $gradeLevel)
-                                <option value="{{ $gradeLevel->id }}">{{ $gradeLevel->grade_name }}</option>
+                                <option value="{{ $gradeLevel->id }}">{{ $gradeLevel->display_name }}</option>
                             @endforeach
                         </select>
                         @error('grade_level_id')

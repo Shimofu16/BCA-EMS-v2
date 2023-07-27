@@ -456,7 +456,7 @@ class EnrollmentForm extends Component
                     'address' => $this->address,
                     'birth_date' => $this->birth_date,
                     'birthplace' => $this->birthplace,
-                    'grade_level' => GradeLevel::where('id', '=', $this->grade_level_id)->first()->grade_name,
+                    'grade_level' => GradeLevel::where('id', '=', $this->grade_level_id)->first()->name,
                 ];
                 $guardian = [
                     'name' => $this->guardian_name,
@@ -507,7 +507,7 @@ class EnrollmentForm extends Component
                 'address' => $this->address,
                 'birth_date' => $this->birth_date,
                 'birthplace' => $this->birthplace,
-                'grade_level' => GradeLevel::where('id', '=', $this->grade_level_id)->first()->grade_name,
+                'grade_level' => GradeLevel::where('id', '=', $this->grade_level_id)->first()->name,
             ];
             $guardian = [
                 'name' => $this->guardian_name,

@@ -56,7 +56,7 @@
                 @endphp
 
                 @if ($user)
-                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ $user->getName() }}</span>
+                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ $user->getFullName() }}</span>
                     <img class="img-profile rounded-circle"
                         src="{{ asset($user->getGender() == 'Male' ? 'assets/img/svg/undraw_profile_2.svg' : 'assets/img/svg/undraw_profile_3.svg') }}">
                     @if ($user->isActive())

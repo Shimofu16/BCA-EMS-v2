@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-
+use Illuminate\Support\Str;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -64,7 +64,18 @@ class User extends Authenticatable
     }
     public function hasRole($role)
     {
-        if ($this->first->name == $role || $this->second->name == $role) {
+        if (Str::lower($this->first->name) == $role || Str::lower($this->second->name) == $role) {
+            return true;
+        }
+        return false;
+    }
+    function isFirstRole($role)
+    {
+        return Str::lower($this->first->name) === Str::lower($role);
+    }
+    function isSecondRole($role)
+    {
+        if ($this->second->name != null && Str::lower($this->second->name) === Str::lower($role)) {
             return true;
         }
         return false;
@@ -92,5 +103,12 @@ class User extends Authenticatable
             return true;
         }
         return false;
+    }
+    public function getRole()
+    {
+        if ($this->hasRole('administrator')) {
+            return 'admin';
+        }    
+        return Str::lower($this->first->name);
     }
 }

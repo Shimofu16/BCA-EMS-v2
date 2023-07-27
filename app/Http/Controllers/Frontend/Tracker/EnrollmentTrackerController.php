@@ -3,18 +3,17 @@
 namespace App\Http\Controllers\Frontend\Tracker;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Manage\MailController;
+use App\Http\Controllers\General\MailController;
 use App\Models\Student;
-use App\Models\Registrar\VerificationCode;
+use App\Models\VerificationCode;
 use Illuminate\Support\Str;
-use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Http\Request;
 
 class EnrollmentTrackerController extends Controller
 {
     public function index()
     {
-        return view('BCA.Frontend.pages.portal.index');
+        return view('BCA.Frontend.pages.portal.form');
     }
     public function track(Request $request)
     {

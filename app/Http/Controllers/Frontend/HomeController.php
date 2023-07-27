@@ -37,8 +37,5 @@ class HomeController extends Controller
     {
         return view('BCA.Frontend.pages.portal.index');
     }
-    public function tracker()
-    {
-        return view('BCA.Frontend.pages.portal.partials.buttons');
-    }
+
 }

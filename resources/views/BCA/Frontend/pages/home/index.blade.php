@@ -1,13 +1,11 @@
 @extends('BCA.Frontend.index')
 @section('css')
-<style>
-    /* generate media query for tablet and pc above */
-    @media (min-width: 768px) {
-        .blue-arrow-bg{
-
+    <style>
+        /* generate media query for tablet and pc above */
+        @media (min-width: 768px) {
+            .blue-arrow-bg {}
         }
-    }
-</style>
+    </style>
 @endsection
 @section('contents')
     <section class="bca-background">
@@ -35,7 +33,8 @@
             <div class="row p-5">
                 <div class="col-auto ms-auto">
                     <iframe
-                        src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FBreakthroughChristianAcademy%2Fvideos%2F1179801739398768%2F&show_text=false&width=560&t=0"style="border:none;" scrolling="no" frameborder="5" allowfullscreen="true"
+                        src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FBreakthroughChristianAcademy%2Fvideos%2F1179801739398768%2F&show_text=false&width=560&t=0"style="border:none;"
+                        scrolling="no" frameborder="5" allowfullscreen="true"
                         allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
                         allowFullScreen="true" class="w-100 mh-100 overflow-hidden"></iframe>
                 </div>
@@ -45,7 +44,8 @@
                         <span>Breakthrough Christian Academy, Inc. is a private educational institution in Quezon City,
                             dedicated to providing quality education and breaking the cycle of poverty through
                             faith-based learning.</span>
-                        <a href="{{ route('about.history.index') }}" class="btn btn-sm btn-outline-light mx-auto mt-2">Read more.</a>
+                        <a href="{{ route('about.history.index') }}" class="btn btn-sm btn-outline-light mx-auto mt-2">Read
+                            more.</a>
                     </div>
                 </div>
 
@@ -99,11 +99,7 @@
             </div>
         </div>
     </section>
-    <section>
-        <div class="container">
-            <hr />
-        </div>
-    </section>
+
 
     <section>
         <div class="container">
@@ -124,20 +120,17 @@
             </div>
             <div class="row g-3" id="photos">
                 @foreach ($albums as $album)
-                    <div class="col-md-4 col-sm-4 ">
-                        <a href="{{ route('gallery.show', ['id' => $album->id]) }}" class="text-decoration-none text-dark">
-                            <div class="card shadow-sm">
-                                <img class="card-img-top card-img-full-2" src="{{ asset($album->path) }}"
-                                    alt="{{ $album->photo }}" />
-                                <div class="card-body">
-                                    <h4 class="card-title">{{ $album->title }}</h4>
-                                    <div class="d-flex justify-content-between">
-                                        <small class="text-muted">{{ date('M d, Y', strtotime($album->date)) }}</small>
-                                    </div>
-                                </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                        <div class="hovereffect">
+                            <img class="img-responsive" src="{{ asset($album->path) }}" alt="album">
+                            <div class="overlay">
+                                <h2>{{ $album->title }}</h2>
+                                <p>
+                                    <a href="{{ route('gallery.show', ['id' => $album->id]) }}"
+                                        class="btn btn-sm btn-link">More Pictures.</a>
+                                </p>
                             </div>
-                        </a>
-                    </div>
+                        </div>
                 @endforeach
             </div>
         </div>

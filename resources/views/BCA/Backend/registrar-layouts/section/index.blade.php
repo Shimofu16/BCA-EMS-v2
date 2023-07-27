@@ -1,7 +1,7 @@
 @extends('BCA.Backend.registrar-layouts.index')
 
 @section('page-title')
-    Sections {{ request()->level_id != null ? 'in ' . $gradeLevels->find(request()->level_id)->grade_name : '' }}
+    Sections {{ request()->level_id != null ? 'in ' . $gradeLevels->find(request()->level_id)->name : '' }}
 @endsection
 @section('contents')
     <div class="row shadow-sm bg-white rounded align-items-center justify-content-between mb-3">
@@ -33,7 +33,7 @@
                         <div class="dropdown-menu shadow" aria-labelledby="dropdownMenuButton">
                             @foreach ($gradeLevels as $level)
                                 <a class="dropdown-item {{ request()->level_id == $level->id ? 'active' : '' }}"
-                                    href="{{ route('registrar.section.index', ['level_id' => $level->id]) }}">{{ $level->grade_name }}
+                                    href="{{ route('registrar.section.index', ['level_id' => $level->id]) }}">{{ $level->display_name }}
                                 </a>
                             @endforeach
                         </div>
@@ -58,7 +58,7 @@
                                 <td> {{ $loop->index + 1 }}</td>
                                 <td>{{ $section->section_name }}</td>
                                 @if (request()->level_id == null)
-                                    <td>{{ $section->gradeLevel->grade_name }}</td>
+                                    <td>{{ $section->gradeLevel->name }}</td>
                                 @endif
                                 @if ($section->students->where('isDropped', '=', 0)->count() == null)
                                     <td>No Student</td>

@@ -12,8 +12,8 @@
                 <form action="#" method="POST">
                     @csrf
                     <div class="form-group">
-                        <label for="grade_name" class="text-dark text-black font-weight-bold">Grade name:</label>
-                        <input class="form-control w-50" type="text" name="grade_name" id="grade_name"
+                        <label for="name" class="text-dark text-black font-weight-bold">Grade name:</label>
+                        <input class="form-control w-50" type="text" name="name" id="name"
                             placeholder="Ex. Grade - 5">
                     </div>
                     <div class="form-group">

@@ -3,13 +3,14 @@
 @section('title')
     @if (Request::is('portals/*'))
         {{ Str::ucfirst($role) }} Portal
+    @elseif (Request::routeIs('tracker.index'))
+        Enrollment Tracker
     @else
         Gateway Hub
     @endif
 @endsection
 @section('forms')
     @if (Request::routeIs('portals.index'))
-        {{-- select --}}
         <div class="row justify-content-center align-items-center mt-5 p-5">
             <div class="col-md-10">
                 <div class="card p-3 rounded-5 glass">
@@ -19,7 +20,7 @@
                         <h3>
                             Gateway Hub
                         </h3>
-                        <h5 class="fw-light text-center">A Centralized Portals for Admin, Cashier, Registrar,
+                        <h5 class="fw-medium text-center">A Centralized Portals for Admin, Cashier, Registrar,
                             Students, and
                             Teachers</h5>
                     </div>
@@ -36,8 +37,9 @@
                                             <div class="card p-3 rounded-5 glass ctm-hvr-sweep-to-right">
                                                 <div
                                                     class="card-header bg-transparent border-bottom-0 d-flex align-items-center justify-content-center  flex-column">
-                                                    <h1>{{ Str::substr($role->name, 0, 1) }}</h1>
-                                                    <h5 class="fw-light text-center fw-800">{{ Str::ucfirst($role->name) }}</h5>
+                                                    <h1>{{ Str::ucfirst(Str::substr($role->name, 0, 1)) }}</h1>
+                                                    <h5 class="fw-light text-center fw-800">{{ Str::ucfirst($role->name) }}
+                                                    </h5>
                                                 </div>
                                             </div>
                                         </a>
@@ -54,10 +56,45 @@
                 </div>
             </div>
         </div>
+    @elseif (Request::routeIs('tracker.index'))
+        <div class="row justify-content-end align-items-center mt-5 p-5">
+            <div class="col-md-4">
+                <form action="{{ route('tracker.track') }}" method="POST">
+                    @csrf
+                    <div class="card p-3 rounded-5">
+                        <div
+                            class="card-header bg-transparent border-bottom-0 d-flex align-items-center justify-content-center  flex-column">
+                            <img src="{{ asset('assets/img/BCA-Logo.png') }}" alt="LOGO" class="form-logo mb-2">
+                            <h3>
+                                @yield('title')
+                            </h3>
+                            <h5 class="fw-light">Track your Enrollment here.</h5>
+                        </div>
+                        <div class="card-body pb-1">
+                            <div class="form-floating mb-2">
+                                <input type="email"
+                                    class="form-control  @error('email') is-invalid @enderror"
+                                    id="email" placeholder="name@example.com" name="email">
+                                <label for="email">
+                                    Email address
+                                </label>
+                                @error('email')
+                                    <span class="text-danger">
+                                        {{ $message }}
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div
+                            class="card-footer bg-transparent border-top-0 d-flex align-items-center justify-content-center flex-column mb-5">
+                            <button class="btn btn-bca w-100 mb-2">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     @else
-        {{-- form --}}
-        <div class="row justify-content-end align-items-center mt-5 p-5" id="animate-fade-in"
-            wire:transition.class="animate__animated animate__fadeOutRight">
+        <div class="row justify-content-end align-items-center mt-5 p-5">
             <div class="col-md-4">
                 <form action="{{ route('portals.auth.login', ['role' => $role]) }}" method="POST">
                     @csrf
@@ -115,4 +152,5 @@
             </div>
         </div>
     @endif
+
 @endsection

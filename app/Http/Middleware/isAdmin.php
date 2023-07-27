@@ -19,7 +19,7 @@ class isAdmin
     public function handle($request, Closure $next)
     {
         // check if the user is a admin
-        if (!Auth::user()->hasRole('Admin')) {
+        if (!Auth::user()->hasRole('administrator')) {
             return back()->with('errorAlert', 'You are not authorized to access this page');
         }
         // check if the user is authenticated
@@ -35,7 +35,7 @@ class isAdmin
                 $request->session()->regenerateToken();
 
                 // redirect to the login page
-                return redirect()->route('portals.show',['role' => 'Admin'])->with('errorAlert', 'Your session has expired. Please login again');
+                return redirect()->route('portals.show',['role' => 'administrator'])->with('errorAlert', 'Your session has expired. Please login again');
             }
 
             // Update last activity to the current time
@@ -43,6 +43,6 @@ class isAdmin
             return $next($request);
         }
 
-        return redirect()->route('portals.show',['role' => 'Admin'])->with('errorAlert', 'You need to login to access this page');
+        return redirect()->route('portals.show',['role' => 'administrator'])->with('errorAlert', 'You need to login to access this page');
     }
 }

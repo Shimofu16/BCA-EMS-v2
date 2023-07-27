@@ -54,7 +54,7 @@
                         <select class="form-control @error('gl') is-invalid @enderror" name="gl" id="gl">
                             <option value="{{ old('gl') }}" selected disabled>------ Select Grade Level -----</option>
                             @forelse ($levels as $level)
-                                <option value="{{ $level->id }}">{{ $level->grade_name }}</option>
+                                <option value="{{ $level->id }}">{{ $level->display_name }}</option>
                             @empty
                                 <option>No Data Available</option>
                             @endforelse

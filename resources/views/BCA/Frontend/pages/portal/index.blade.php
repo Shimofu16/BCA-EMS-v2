@@ -39,11 +39,7 @@
 
 <body class="form-bg of-hidden">
     <div class="form-bg-overlay">
-        @hasSection('forms')
             @yield('forms')
-        @else
-            {{ 'no forms' }}
-        @endif
     </div>
     @include('sweetalert::alert')
 

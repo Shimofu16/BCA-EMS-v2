@@ -30,4 +30,6 @@
     @yield('dashboard-css')
     {{-- school logo --}}
     <link rel="icon" href="/assets/img/BCA-Logo.png">
+    @livewireStyles
+    @livewireScripts
 </head>

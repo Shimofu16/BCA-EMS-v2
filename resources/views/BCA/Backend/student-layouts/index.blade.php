@@ -57,7 +57,7 @@
                     @endphp
                     @forelse ($levels as $level)
                         <a class="collapse-item mb-1 {{ Request::is('student/sy/' . $level->sy_id) ? 'active-collapse-item' : '' }}"
-                            href="{{ route('student.grades.show', ['sy_id' => $level->sy_id]) }}">{{ $level->gradeLevel->grade_name }}</a>
+                            href="{{ route('student.grades.show', ['sy_id' => $level->sy_id]) }}">{{ $level->gradeLevel->name }}</a>
                         </a>
                     @empty
                         <a class="collapse-item mb-1 " href="#">No Grades Available</a>

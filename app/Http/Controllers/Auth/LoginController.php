@@ -69,7 +69,7 @@ class LoginController extends Controller
 
     public function login(Request $request, $role)
     {
-
+        $role = Str::lower($role);
         if ($this->hasTooManyLoginAttempts($request)) {
             $this->fireLockoutEvent($request);
             return $this->sendLockoutResponse($request);
@@ -82,21 +82,20 @@ class LoginController extends Controller
                     'email' => 'Login Failed. This account is blocked.',
                 ]);
             }
-            if (Auth::user()->status == "offline" && Auth::user()->hasRole(Str::ucfirst($role))) {
+            if (Auth::user()->hasRole($role)) {
                 $this->updateStatusTo(Auth::id(), 'online');
                 $this->createLog(Auth::id());
                 $this->createUserSession(Auth::id());
                 $request->session()->regenerate();
                 $this->clearLoginAttempts($request);
-                return redirect()->intended(route(Str::lower($role) . '.dashboard.index'))->with('successToast', 'Welcome back, ' . Auth::user()->getFullName() . '!');
+                $role = ($role === "administrator") ? "admin" : $role;
+                return redirect()->intended(route($role . '.dashboard.index'))->with('successToast', 'Welcome back, ' . Auth::user()->getFullName() . '!');
             }
             Auth::logout();
             $request->session()->invalidate();
             $request->session()->regenerateToken();
             $this->clearLoginAttempts($request);
-            return back()->withErrors([
-                'email' => 'Login Failed. This account is already in use. Please log out from the other device and try again.',
-            ]);
+
         }
         $this->incrementLoginAttempts($request);
         return back()->withErrors([

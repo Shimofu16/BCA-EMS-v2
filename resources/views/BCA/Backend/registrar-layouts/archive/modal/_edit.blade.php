@@ -15,7 +15,7 @@
                     @csrf
                     @method('PUT')
                     <h5 class="text-center fw-bold py-3">
-                        Are you sure you want to restore {{ $student->getName($student->id) }}?
+                        Are you sure you want to restore {{ $student->getFullName($student->id) }}?
                     </h5>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>

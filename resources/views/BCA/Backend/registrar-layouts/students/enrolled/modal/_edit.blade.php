@@ -117,10 +117,10 @@
                                 level <span class="text-danger">*</span></label>
                             <select name="grade_level_id" id="grade_level_id" class="form-control">
                                 <option selected value="{{ $student->grade_level_id }}">
-                                    {{ $student->gradeLevel->grade_name }}</option>
+                                    {{ $student->gradeLevel->name }}</option>
                                 @foreach ($gradeLevels as $level)
-                                    @if ($student->gradeLevel->grade_name != $level->grade_name)
-                                        <option value="{{ $level->id }}">{{ $level->grade_name }}</option>
+                                    @if ($student->gradeLevel->name != $level->display_name)
+                                        <option value="{{ $level->id }}">{{ $level->display_name }}</option>
                                     @endif
                                 @endforeach
                             </select>

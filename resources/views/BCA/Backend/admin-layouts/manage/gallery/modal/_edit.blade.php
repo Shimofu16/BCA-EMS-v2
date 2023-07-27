@@ -57,11 +57,11 @@
                             <label for="gl" class="font-weight-bold">Grade Level</label>
                             <select class="form-control" name="gl" id="gl">
                                 <option value="Selected Value" selected disabled>
-                                    {{ $album->gradeLevel->grade_name != null ? $album->gradeLevel->grade_name : 'Select Grade Level' }}
+                                    {{ $album->gradeLevel->name != null ? $album->gradeLevel->name : 'Select Grade Level' }}
                                 </option>
                                 @forelse ($levels as $level)
                                     @if ($album->grade_level_id != $level->id)
-                                        <option value="{{ $level->id }}">{{ $level->grade_name }}</option>
+                                        <option value="{{ $level->id }}">{{ $level->display_name }}</option>
                                     @endif
                                 @empty
                                     <option>No Data Available</option>

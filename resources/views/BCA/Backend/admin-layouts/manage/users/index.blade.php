@@ -46,7 +46,7 @@
                                 @endif
                                 <td>
                                     <div class="d-flex flex-column px-2 py-1">
-                                        <h5 class="mb-0 text-sm"> {{ $user->getName() }}
+                                        <h5 class="mb-0 text-sm"> {{ $user->getFullName() }}
                                         </h5>
                                         <p class="text-sm text-secondary mb-0">
                                             {{ $user->email }}
@@ -91,10 +91,13 @@
                                 <td>
 
                                         <div class="d-flex justify-content-center">
+                                            @if (Request::is('admin/user/faculty'))
                                             <button type="button" class="btn btn-outline-primary btn-sm mr-1"
                                                 data-toggle="modal" data-target="#edit{{ $user->id }}"><i
                                                     class="fa fa-edit" aria-hidden="true"></i> Edit</button>
                                             @include('BCA.Backend.admin-layouts.manage.users.modal._edit')
+
+                                            @endif
                                             <button type="button"
                                                 class="btn btn-sm btn-outline-danger {{ $user->status == 'online' ? '' : 'disabled pointer-event-none' }}"
                                                 data-toggle="modal" data-target="#logout{{ $user->id }}">
