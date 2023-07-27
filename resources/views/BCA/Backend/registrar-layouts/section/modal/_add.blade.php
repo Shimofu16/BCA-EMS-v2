@@ -12,11 +12,11 @@
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="section_name" class="font-weight-bold">Section name <span
+                        <label for="name" class="font-weight-bold">Section name <span
                                 class="text-danger">*</span></label>
-                        <input class="form-control w-50 @error('section_name') is-invalid @enderror" type="text" name="section_name" id="section_name"
+                        <input class="form-control w-50 @error('name') is-invalid @enderror" type="text" name="name" id="name"
                             placeholder="Section name" required>
-                        @error('section_name')
+                        @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>

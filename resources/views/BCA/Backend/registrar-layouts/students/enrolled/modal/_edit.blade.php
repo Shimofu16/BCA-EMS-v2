@@ -97,15 +97,15 @@
                                     class="text-danger">*</span></label>
                             <select name="section_id" id="section_id" class="form-control">
                                 <option selected value="{{ $student->section_id }}">
-                                    {{ $student->section->section_name }}</option>
+                                    {{ $student->section->name }}</option>
                                 @php
                                     $sections = DB::table('sections')
                                         ->where('grade_level_id', $student->grade_level_id)
                                         ->get();
                                 @endphp
                                 @forelse ($sections as $section)
-                                    @if ($student->section->section_name != $section->section_name)
-                                        <option value="{{ $section->id }}">{{ $section->section_name }}</option>
+                                    @if ($student->section->name != $section->name)
+                                        <option value="{{ $section->id }}">{{ $section->name }}</option>
                                     @endif
                                 @empty
                                     <option disabled> No section available</option>

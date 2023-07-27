@@ -20,19 +20,31 @@
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>dashboard</span></a>
         </li>
+        {{-- @php
+            $firstRole = Auth::user()->first;
+            $secondRole = Auth::user()->second;
+            $cashierRoute = $secondRole->role !== null ? route(Str::lower($secondRole->name) . '.dashboard.index') : route(Str::lower($firstRole->name) . '.dashboard.index');
+            $cashierName = $secondRole->role !== null ? Str::ucfirst($secondRole->name) : Str::ucfirst($firstRole->name);
+        @endphp
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{ $cashierRoute }}">
+                <i class="fa-solid fa-repeat"></i>
+                <span>{{ $cashierName }} Dashboard</span>
+            </a>
+        </li> --}}
+
         @if (Auth::user()->isFirstRole('Cashier') && Auth::user()->second->role !== null)
             <li class="nav-item ">
-                <a class="nav-link"
-                    href="{{ route(Str::lower(Auth::user()->second->name) . '.dashboard.index') }}">
+                <a class="nav-link" href="{{ route(Str::lower(Auth::user()->second->name) . '.dashboard.index') }}">
                     <i class="fa-solid fa-repeat"></i>
-                    <span>{{ Auth::user()->second->name }} Dashboard</span></a>
+                    <span>{{ Str::ucfirst(Auth::user()->second->name) }} Dashboard</span></a>
             </li>
         @elseif (Auth::user()->isSecondRole('Cashier'))
             <li class="nav-item ">
-                <a class="nav-link"
-                    href="{{ route(Str::lower(Auth::user()->first->name) . '.dashboard.index') }}">
+                <a class="nav-link" href="{{ route(Str::lower(Auth::user()->first->name) . '.dashboard.index') }}">
                     <i class="fa-solid fa-repeat"></i>
-                    <span>{{ Auth::user()->first->name }} Dashboard</span></a>
+                    <span>{{ Str::ucfirst(Auth::user()->first->name) }} Dashboard</span></a>
             </li>
         @endif
         <!-- Divider -->

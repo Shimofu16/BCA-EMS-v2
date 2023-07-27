@@ -22,7 +22,7 @@ class isRegistrar
     public function handle(Request $request, Closure $next)
     {
         // check if the user is a registrar
-        if (!Auth::user()->hasRole('Registrar')) {
+        if (!Auth::user()->hasRole('registrar')) {
             return back()->with('errorAlert', 'You are not authorized to access this page');
         }
         // check if the user is authenticated
@@ -37,7 +37,7 @@ class isRegistrar
                 $request->session()->invalidate();
                 $request->session()->regenerateToken();
 
-                return redirect()->route('portals.show',['role' => 'Registrar'])->with('errorAlert', 'Your session has expired. Please login again');
+                return redirect()->route('portals.show',['role' => 'registrar'])->with('errorAlert', 'Your session has expired. Please login again');
             }
 
             // Update last activity to the current time
@@ -45,6 +45,6 @@ class isRegistrar
             return $next($request);
         }
 
-        return redirect()->route('portals.show',['role' => 'Registrar'])->with('errorAlert', 'You need to login to access this page');
+        return redirect()->route('portals.show',['role' => 'registrar'])->with('errorAlert', 'You need to login to access this page');
     }
 }

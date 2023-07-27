@@ -17,7 +17,7 @@ class UserLogExport implements FromCollection, WithHeadings, WithMapping, WithTi
      */
     public function title(): string
     {
-        return 'Users Logs';
+        return 'Activity Logs';
     }
     public function collection()
     {
@@ -30,8 +30,8 @@ class UserLogExport implements FromCollection, WithHeadings, WithMapping, WithTi
         return [
             'ID',
             'User ID',
-            'Time In',
-            'Time Out',
+            'Activity',
+            'Description',
             'Created At',
             'Updated At',
         ];
@@ -42,8 +42,8 @@ class UserLogExport implements FromCollection, WithHeadings, WithMapping, WithTi
         return [
             $row->id,
             $row->user_id,
-            $row->time_in,
-            $row->time_out,
+            $row->activity,
+            $row->description,
             $row->created_at,
             $row->updated_at,
         ];

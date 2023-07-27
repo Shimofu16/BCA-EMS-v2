@@ -53,7 +53,7 @@
                                                 {{ $student->gradeLevel->name }}
                                             </h5>
                                             <p class="text-sm text-secondary mb-0">
-                                                {{ $student->section->section_name }}
+                                                {{ $student->section->name }}
                                             </p>
                                         </div>
                                     </td>

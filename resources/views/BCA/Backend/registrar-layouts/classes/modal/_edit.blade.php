@@ -9,7 +9,7 @@
                 </button>
             </div>
 
-            @livewire('registrar.class.update', ['class' => $class,'section'=>$class->section,'sections'=>$sections,'teachers'=>$teachers,'subjects'=>$subjects], key($class->id))
+            @livewire('backend.registrar.edit-class', ['class' => $class,'section'=>$class->section,'sections'=>$sections,'teachers'=>$teachers,'subjects'=>$subjects], key($class->id))
 
 
         </div>

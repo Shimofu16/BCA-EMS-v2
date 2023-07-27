@@ -87,6 +87,8 @@ class User extends Authenticatable
         } else if ($this->student_id != null) {
             return $this->student->getFullName();
         }
+        return $this->name;
+
     }
     public function getGender()
     {

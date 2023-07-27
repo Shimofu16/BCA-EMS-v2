@@ -20,7 +20,7 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        {{ $section != null ? $section->section_name : '' }}
+                                        {{ $section != null ? $section->name : '' }}
                                     </td>
                                     <td>
                                         {{ $section != null ? ($section->teacher != null ? $section->teacher->name : 'No Adviser.') : '' }}

@@ -1,25 +1,40 @@
 <?php
 
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Backend\admin\AnnouncementsController;
-use App\Http\Controllers\Backend\admin\BankAccountController;
-use App\Http\Controllers\Backend\admin\DashboardController;
-use App\Http\Controllers\Backend\admin\DatabaseBackupController;
-use App\Http\Controllers\Backend\admin\EventController;
-use App\Http\Controllers\Backend\admin\GalleryController;
-use App\Http\Controllers\Backend\admin\GradesController;
-use App\Http\Controllers\General\ProfileController;
-use App\Http\Controllers\Backend\admin\SchoolYearController;
-use App\Http\Controllers\Backend\admin\UsersController;
-use App\Http\Controllers\Frontend\AboutUs\AboutUsController;
-use App\Http\Controllers\Frontend\Academics\AcademicsController;
-use App\Http\Controllers\Frontend\Announcement\AnnouncementController;
-use App\Http\Controllers\Frontend\Gallery\GalleryController as HomeGalleryController;
-use App\Http\Controllers\Frontend\HomeController;
-use App\Http\Controllers\Frontend\Tracker\EnrollmentTrackerController;
-use App\Http\Controllers\General\MailController;
 use App\Models\Role;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\General\MailController;
+use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\General\ProfileController;
+use App\Http\Controllers\Backend\admin\EventController;
+use App\Http\Controllers\Backend\admin\UsersController;
+use App\Http\Controllers\Backend\admin\GradesController;
+use App\Http\Controllers\Backend\admin\GalleryController;
+use App\Http\Controllers\Backend\admin\DashboardController;
+use App\Http\Controllers\Backend\registrar\ClassController;
+use App\Http\Controllers\Backend\admin\SchoolYearController;
+use App\Http\Controllers\Frontend\AboutUs\AboutUsController;
+use App\Http\Controllers\Backend\admin\BankAccountController;
+use App\Http\Controllers\Backend\registrar\ArchiveController;
+use App\Http\Controllers\Backend\registrar\SectionController;
+use App\Http\Controllers\Backend\registrar\SubjectController;
+use App\Http\Controllers\Backend\registrar\TeacherController;
+use App\Http\Controllers\Backend\admin\AnnouncementsController;
+use App\Http\Controllers\Backend\admin\DatabaseBackupController;
+use App\Http\Controllers\Backend\cashier\AnnualController;
+use App\Http\Controllers\Backend\cashier\ConfirmedController;
+use App\Http\Controllers\Backend\cashier\DashboardController as CashierDashboardController;
+use App\Http\Controllers\Backend\cashier\PendingController;
+use App\Http\Controllers\Backend\cashier\StudentPaymentController;
+use App\Http\Controllers\Frontend\Academics\AcademicsController;
+use App\Http\Controllers\Frontend\Announcement\AnnouncementController;
+use App\Http\Controllers\Frontend\Tracker\EnrollmentTrackerController;
+use App\Http\Controllers\Frontend\Gallery\GalleryController as HomeGalleryController;
+use App\Http\Controllers\Backend\registrar\DashboardController as RegistrarDashboardController;
+use App\Http\Controllers\Backend\registrar\EnrolledStudentController;
+use App\Http\Controllers\Backend\registrar\EnrolleeController;
+use App\Http\Controllers\Backend\registrar\SchoolYearController as RegistrarSchoolYearController;
+use App\Http\Controllers\General\ExportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -149,7 +164,7 @@ Route::middleware(['auth', 'alert'])->group(function () {
         Route::get('/dashboard', [RegistrarDashboardController::class, 'index'])->name('dashboard.index');
         Route::get('/send/verification', [RegistrarDashboardController::class, 'sendVerificationCode'])->name('send.mail');
         Route::get('/accept/all', [RegistrarDashboardController::class, 'acceptAllUnverifiedEmails'])->name('accept.all.unverified.email');
-        Route::name('sy.')->controller(SchoolYearController::class)->group(function () {
+        Route::name('sy.')->controller(RegistrarSchoolYearController::class)->group(function () {
             Route::post('/update/sy/{id}', 'update')->name('update');
             Route::post('/store/sy', 'store')->name('store');
             Route::get('/open/sy/enrollment', 'open')->name('enrollment.open');
@@ -287,6 +302,12 @@ Route::middleware(['auth', 'alert'])->group(function () {
             Route::put('/update/password', 'updatePassword')->name('updatePassword.update');
         });
     });
+});
+Route::name('export.')->controller(ExportController::class)->group(function () {
+    Route::get('export/class-list', 'officialClassList')->name('official.class.list');
+    Route::get('export/class-list/{id}', 'classlist')->name('class.list');
+    Route::get('export/student-grade/{id}/{sy_id}/{isStudent}', 'grade')->name('grade');
+    Route::get('export/class-schedule/{id}/{isStudent}', 'classSchedule')->name('class.schedule');
 });
 Route::get('/send/email/accepted', function () {
     $email = 'royjosephlatayan16@gmail.com';

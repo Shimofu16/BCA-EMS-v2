@@ -59,7 +59,7 @@ class ExportController extends Controller
                 ->get();
             $pdf = app('dompdf.wrapper');
             $pdf->loadView('BCA.Exports.class_list.index', compact('students', 'sy'));
-            return $pdf->download('class_list_' . $section->section_name . '_' . $section->gradeLevel->name . '.pdf');
+            return $pdf->download('class_list_' . $section->name . '_' . $section->gradeLevel->name . '.pdf');
         } catch (\Throwable $th) {
             dd($th);
         }

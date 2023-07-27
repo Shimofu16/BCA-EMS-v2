@@ -5,7 +5,7 @@
 @section('contents')
     <div class="row shadow-sm bg-white rounded align-items-center justify-content-between mb-3">
         <div class="col">
-            <h1 class="h3 text-gray-800 py-3 mb-0">{{ $section->section_name }}</h1>
+            <h1 class="h3 text-gray-800 py-3 mb-0">{{ $section->name }}</h1>
         </div>
         <div class="col">
             <div class="d-flex justify-content-end">

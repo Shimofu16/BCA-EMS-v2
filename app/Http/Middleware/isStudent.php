@@ -18,7 +18,7 @@ class isStudent
     public function handle(Request $request, Closure $next)
     {
         // check if the user is a student
-        if (!Auth::user()->hasRole('Student')) {
+        if (!Auth::user()->hasRole('student')) {
             return back()->with('errorAlert', 'You are not authorized to access this page');
         }
         // check if the user is authenticated
@@ -33,7 +33,7 @@ class isStudent
                 $request->session()->invalidate();
                 $request->session()->regenerateToken();
 
-                return redirect()->route('portals.show',['role' => 'Student'])->with('errorAlert', 'Your session has expired. Please login again');
+                return redirect()->route('portals.show',['role' => 'student'])->with('errorAlert', 'Your session has expired. Please login again');
             }
 
             // Update last activity to the current time
@@ -41,6 +41,6 @@ class isStudent
             return $next($request);
         }
 
-        return redirect()->route('portals.show',['role' => 'Student'])->with('errorAlert', 'You need to login to access this page');
+        return redirect()->route('portals.show',['role' => 'student'])->with('errorAlert', 'You need to login to access this page');
     }
 }

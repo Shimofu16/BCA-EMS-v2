@@ -15,8 +15,8 @@
                     <div class="form-group">
                         <label class="font-weight-bold" for="section">Section name <span
                                 class="text-danger">*</span></label>
-                        <input class="form-control w-50" type="text" name="section_name" id="section"
-                            placeholder="Section name" value="{{ $section->section_name }}">
+                        <input class="form-control w-50" type="text" name="name" id="section"
+                            placeholder="Section name" value="{{ $section->name }}">
                     </div>
                     <div class="form-group mb-3">
                         <label class="font-weight-bold" for="teacher_id">Adviser <span

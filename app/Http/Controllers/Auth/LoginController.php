@@ -27,35 +27,19 @@ class LoginController extends Controller
         return $credentials;
     }
 
-    private function createLog($id)
+    private function createLog($id,$activity,$description)
     {
         ActivityLog::create([
             'user_id' => $id,
-            'activity' => 'Authenticated',
-            'description' => 'User has been authenticated.',
-            'login_at' => now(),
-
+            'activity' => $activity,
+            'description' => $description,
         ]);
     }
     private function updateStatusTo($id, $status)
     {
         User::where('id', '=', $id)->update(['status' => $status]);
     }
-    private function updateLog($id)
-    {
-        $log = ActivityLog::with('user')
-            ->where('user_id', $id)
-            ->where('activity', 'Authenticated')
-            ->where('login_at', '!=', null)
-            ->where('logout_at', '=', null)
-            ->latest('id')
-            ->first();
 
-        $log->time_out = now();
-        $log->updated_at = now();
-        $log->updated_by = auth()->user()->name;
-        $log->save();
-    }
     private function createUserSession($id)
     {
         session([$id . '_active_session' => now()]);
@@ -84,7 +68,7 @@ class LoginController extends Controller
             }
             if (Auth::user()->hasRole($role)) {
                 $this->updateStatusTo(Auth::id(), 'online');
-                $this->createLog(Auth::id());
+                $this->createLog(Auth::id(),'Login','User logged in.');
                 $this->createUserSession(Auth::id());
                 $request->session()->regenerate();
                 $this->clearLoginAttempts($request);
@@ -107,8 +91,8 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         try {
-            // Update the admin's log with the time of logout
-            $this->updateLog(Auth::id());
+            // Create a log
+            $this->createLog(Auth::id(),'Logout','User logged out.');
 
             // Forget the admin's session
             $this->forgetUserSession(Auth::id());

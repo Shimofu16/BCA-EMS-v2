@@ -27,7 +27,7 @@
                             <tbody>
                                 @forelse ($schedules as $sched)
                                     <tr>
-                                        <td scope="row">{{ $sched->section->section_name }}</td>
+                                        <td scope="row">{{ $sched->section->name }}</td>
                                         <td>{{ $sched->subject->subject }}</td>
                                         <td>
                                             <div class="d-flex flex-column">

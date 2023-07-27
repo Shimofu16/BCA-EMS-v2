@@ -11,11 +11,11 @@
             <div class="modal-body">
                 @if ($section->students->count() == 0)
                     <h5 class="text-center fw-bold">
-                        Are you sure you want to delete {{ $section->section_name }}?
+                        Are you sure you want to delete {{ $section->name }}?
                     </h5>
                 @else
                     <h5 class="text-start fw-bold">
-                        {{ $section->section_name }} can't be removed. Because this section contains students
+                        {{ $section->name }} can't be removed. Because this section contains students
                     </h5>
                 @endif
             </div>

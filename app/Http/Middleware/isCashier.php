@@ -18,7 +18,7 @@ class isCashier
     public function handle(Request $request, Closure $next)
     {
         // check if the user is a cashier
-        if (!Auth::user()->hasRole('Cashier')) {
+        if (!Auth::user()->hasRole('cashier')) {
             return back()->with('errorAlert', 'You are not authorized to access this page');
         }
         // check if the user is authenticated
@@ -33,7 +33,7 @@ class isCashier
                 $request->session()->invalidate();
                 $request->session()->regenerateToken();
 
-                return redirect()->route('portals.show',['role' => 'Cashier'])->with('errorAlert', 'Your session has expired. Please login again');
+                return redirect()->route('portals.show',['role' => 'cashier'])->with('errorAlert', 'Your session has expired. Please login again');
             }
 
             // Update last activity to the current time
@@ -41,6 +41,6 @@ class isCashier
             return $next($request);
         }
 
-        return redirect()->route('portals.show',['role' => 'Cashier'])->with('errorAlert', 'You need to login to access this page');
+        return redirect()->route('portals.show',['role' => 'cashier'])->with('errorAlert', 'You need to login to access this page');
     }
 }

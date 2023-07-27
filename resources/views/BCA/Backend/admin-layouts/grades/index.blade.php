@@ -50,7 +50,7 @@
                         @foreach ($sections as $section)
                             <tr>
                                 <td> {{ $loop->index + 1 }}</td>
-                                <td>{{ $section->section_name }}</td>
+                                <td>{{ $section->name }}</td>
                                 @if (request()->level_id == null)
                                     <td>{{ $section->gradeLevel->name }}</td>
                                 @endif

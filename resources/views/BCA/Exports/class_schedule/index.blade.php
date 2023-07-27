@@ -22,7 +22,7 @@
     </div>
     <div class="fw-bold mb-3 text-center">
         <h3 class="mb-1 mt-0">Home Room</h3>
-        <span> Section: {{ $section != null ? $section->section_name : '' }}</span>
+        <span> Section: {{ $section != null ? $section->name : '' }}</span>
         @if ($isStudent)
             <br>
             <span>Adviser:
@@ -44,7 +44,7 @@
                 @foreach ($schedules as $schedule)
                     <tr>
                         <td scope="row" class="bordered-body">{{ $schedule->class_code }}</td>
-                        <td scope="row" class="bordered-body">{{ $schedule->section->section_name }}</td>
+                        <td scope="row" class="bordered-body">{{ $schedule->section->name }}</td>
                         <td scope="row" class="bordered-body">{{ $schedule->subject->subject }}</td>
                         <td>
                             <div>

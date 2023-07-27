@@ -1,7 +1,7 @@
 @extends('BCA.Backend.student-layouts.index')
 
 @section('page-title')
-    {{ $section->section_name }}
+    {{ $section->name }}
 @endsection
 @section('contents')
     <div class="row shadow-sm align-items-center justify-content-between px-3 mb-3">

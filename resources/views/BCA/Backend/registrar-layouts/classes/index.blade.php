@@ -35,7 +35,7 @@
                         @foreach ($classes as $class)
                             <tr>
                                 <td> {{ $class->class_code }}</td>
-                                <td> {{ $class->section->section_name }}</td>
+                                <td> {{ $class->section->name }}</td>
                                 <td> {{ $class->subject->subject }}</td>
                                 <td>
                                     <div class="d-flex flex-column">

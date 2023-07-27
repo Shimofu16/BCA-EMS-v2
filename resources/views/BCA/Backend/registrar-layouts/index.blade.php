@@ -25,13 +25,13 @@
             <li class="nav-item ">
                 <a class="nav-link" href="{{ route(Str::lower(Auth::user()->second->name) . '.dashboard.index') }}">
                     <i class="fa-solid fa-repeat"></i>
-                    <span>{{ Auth::user()->second->name }} Dashboard</span></a>
+                       <span>{{ Str::ucfirst(Auth::user()->second->name) }} Dashboard</span></a>
             </li>
         @elseif (Auth::user()->isSecondRole('Registrar'))
             <li class="nav-item ">
                 <a class="nav-link" href="{{ route(Str::lower(Auth::user()->first->name) . '.dashboard.index') }}">
                     <i class="fa-solid fa-repeat"></i>
-                    <span>{{ Auth::user()->first->name }} Dashboard</span></a>
+                    <span>{{ Str::ucfirst(Auth::user()->first->name) }} Dashboard</span></a>
             </li>
         @endif
         <!-- Divider -->

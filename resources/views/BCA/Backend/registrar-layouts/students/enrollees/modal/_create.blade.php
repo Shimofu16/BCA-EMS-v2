@@ -23,7 +23,7 @@
                                     ->get();
                             @endphp
                             @forelse  ($sections as $section)
-                                <option value="{{ $section->id }}">{{ $section->section_name }}</option>
+                                <option value="{{ $section->id }}">{{ $section->name }}</option>
                             @empty
                                 <option disabled> No section available</option>
                             @endforelse

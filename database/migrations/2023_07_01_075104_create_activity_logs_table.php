@@ -16,8 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('activity');
             $table->string('description');
-            $table->timestamp('login_at')->nullable();
-            $table->timestamp('logout_at')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade');
             $table->timestamps();
         });
     }

@@ -38,7 +38,7 @@ class CheckActiveSession
                 $request->session()->invalidate();
                 $request->session()->regenerateToken();
                 // get role
-                $role = Str::lower(Auth::user()->first->name);
+                $role = Str::lower(Auth::user()->getRole());
                 // logout the user
                 Auth::logout();
                 // Redirect to the login page

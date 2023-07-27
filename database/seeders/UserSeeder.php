@@ -17,31 +17,32 @@ class UserSeeder extends Seeder
     {
         $users = [
             [
-                'email' => Teacher::find(1)->email,
+                'name' => 'Administrator',
+                'gender' => 'Male',
+                'email' => 'bcaadmin@app.com',
                 'password' => Hash::make('password'),
                 'first_role_id' => 1,
-                'teacher_id' => Teacher::find(1)->id,
             ],
 
             [
-                'email' => Teacher::find(2)->email,
+                'email' => Teacher::find(1)->email,
                 'password' => Hash::make('password'),
                 'first_role_id' => 4,
                 'teacher_id' => 2,
                 'created_at' => now()
             ],
             [
-                'email' => Teacher::find(3)->email,
+                'name' => 'Registrar', 
+                'gender' => 'Male',
+                'email' => 'bcaregistrar@app.com',
                 'password' => Hash::make('password'),
                 'first_role_id' => 2,
                 'second_role_id' => 3,
-                'teacher_id' => 3,
                 'created_at' => now()
             ],
         ];
         foreach ($users as $user) {
             User::create($user);
         }
-
     }
 }

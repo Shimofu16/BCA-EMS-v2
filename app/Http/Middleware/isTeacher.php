@@ -18,7 +18,7 @@ class isTeacher
     public function handle(Request $request, Closure $next)
     {
          // check if the user is a Teacher
-         if (!Auth::user()->hasRole('Teacher')) {
+         if (!Auth::user()->hasRole('teacher')) {
             return back()->with('errorAlert', 'You are not authorized to access this page');
         }
         // check if the user is authenticated
@@ -33,7 +33,7 @@ class isTeacher
                 $request->session()->invalidate();
                 $request->session()->regenerateToken();
 
-                return redirect()->route('portals.show',['role' => 'Teacher'])->with('errorAlert', 'Your session has expired. Please login again');
+                return redirect()->route('portals.show',['role' => 'teacher'])->with('errorAlert', 'Your session has expired. Please login again');
             }
 
             // Update last activity to the current time
@@ -41,6 +41,6 @@ class isTeacher
             return $next($request);
         }
 
-        return redirect()->route('portals.show',['role' => 'Teacher'])->with('errorAlert', 'You need to login to access this page');
+        return redirect()->route('portals.show',['role' => 'teacher'])->with('errorAlert', 'You need to login to access this page');
     }
 }

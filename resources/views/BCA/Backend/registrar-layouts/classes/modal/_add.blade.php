@@ -8,7 +8,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            @livewire('registrar.class.create')
+            @livewire('backend.registrar.add-class')
         </div>
     </div>
 </div>
