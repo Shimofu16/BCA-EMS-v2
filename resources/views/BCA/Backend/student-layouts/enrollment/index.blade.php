@@ -13,7 +13,7 @@
                 <div class="card-header text-center bg-bca text-white p-3 mb-3 shadow">
                     <h2 class="py-3 text-capitalize">BCA Online Enrolment Form</h2>
                 </div>
-                @livewire('student.enrollment.form', ['student' => $student, 'guardian' => $guardian, 'isEnrollment' => $isEnrollment])
+                @livewire('backend.student.enrollment-form', ['student' => $student, 'guardian' => $guardian, 'isEnrollment' => $isEnrollment])
             </div>
 
         </div>

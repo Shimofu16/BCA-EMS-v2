@@ -87,11 +87,13 @@ class BackupController extends Controller
 
         if ($existingBackup) {
             // If the backup already exists, update the ExportsBackup and download
-            Excel::store(new ExportsBackup(), $fullPath, 'local');
+            Excel::store(new ExportsBackup(), $fullPath);
+            $existingBackup->update(['updated_at' => Carbon::now()]);
             return (new ExportsBackup())->download($fileName);
+
         }
 
-        Excel::store(new ExportsBackup(), $fullPath, 'local');
+        Excel::store(new ExportsBackup(), $fullPath);
 
         Backup::create([
             'name' => $fileName,

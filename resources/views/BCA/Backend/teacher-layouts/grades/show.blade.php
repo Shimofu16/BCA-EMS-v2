@@ -15,7 +15,7 @@
         </div>
     </div>
     <div class="row shadow-sm bg-white rounded p-3">
-        @livewire('teacher.grades.input-grades', ['students' => $students])
+        @livewire('backend.teacher.add-grades', ['students' => $students])
 
     </div>
 @endsection

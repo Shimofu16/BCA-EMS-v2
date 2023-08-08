@@ -20,19 +20,6 @@
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>dashboard</span></a>
         </li>
-        {{-- @php
-            $firstRole = Auth::user()->first;
-            $secondRole = Auth::user()->second;
-            $cashierRoute = $secondRole->role !== null ? route(Str::lower($secondRole->name) . '.dashboard.index') : route(Str::lower($firstRole->name) . '.dashboard.index');
-            $cashierName = $secondRole->role !== null ? Str::ucfirst($secondRole->name) : Str::ucfirst($firstRole->name);
-        @endphp
-
-        <li class="nav-item">
-            <a class="nav-link" href="{{ $cashierRoute }}">
-                <i class="fa-solid fa-repeat"></i>
-                <span>{{ $cashierName }} Dashboard</span>
-            </a>
-        </li> --}}
 
         @if (Auth::user()->isFirstRole('Cashier') && Auth::user()->second->role !== null)
             <li class="nav-item ">

@@ -34,6 +34,11 @@ use App\Http\Controllers\Backend\registrar\DashboardController as RegistrarDashb
 use App\Http\Controllers\Backend\registrar\EnrolledStudentController;
 use App\Http\Controllers\Backend\registrar\EnrolleeController;
 use App\Http\Controllers\Backend\registrar\SchoolYearController as RegistrarSchoolYearController;
+use App\Http\Controllers\Backend\student\DashboardController as StudentDashboardController;
+use App\Http\Controllers\Backend\teacher\AdvisoryClassController;
+use App\Http\Controllers\Backend\teacher\DashboardController as TeacherDashboardController;
+use App\Http\Controllers\Backend\teacher\GradeController;
+use App\Http\Controllers\Backend\teacher\SubjectController as TeacherSubjectController;
 use App\Http\Controllers\General\ExportController;
 
 /*
@@ -265,7 +270,7 @@ Route::middleware(['auth', 'alert'])->group(function () {
     route::prefix('teacher')->name('teacher.')->middleware(['isTeacher'])->group(function () {
         Route::get('/dashboard', [TeacherDashboardController::class, 'index'])->name('dashboard.index');
 
-        Route::name('subject.')->prefix('subject')->controller(SubjectsSubjectController::class)->group(function () {
+        Route::name('subject.')->prefix('subject')->controller(TeacherSubjectController::class)->group(function () {
             Route::get('/{id}', 'show')->name('show');
         });
         Route::name('advisory.')->prefix('advisory')->controller(AdvisoryClassController::class)->group(function () {
