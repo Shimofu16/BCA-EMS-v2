@@ -8,8 +8,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Grades</title>
     <!-- custom css -->
-    {{-- <link href="{{ asset('assets/css/pdf.css') }}" rel="stylesheet" type="text/css" /> --}}
-    <link href="./assets/css/pdf.css" rel="stylesheet" type="text/css" /> 
+    <link href="{{ asset('assets/css/pdf.css') }}" rel="stylesheet" type="text/css" />
+    {{-- <link href="/assets/css/pdf.css" rel="stylesheet" type="text/css" />  --}}
     <style>
         html {
             margin: 30px;
@@ -25,7 +25,7 @@
                     <th></th>
                     <th></th>
                     <th class="fw-bold text-center" style="position: relative; width: 100%">
-                         <img src="./assets/img/BCA-Logo.png" alt="bca logo"
+                         <img src="{{ asset('assets/img/BCA-Logo.png') }}" alt="bca logo"
                             style="height: 70px; width:70px; position: absolute; left: 135px;">
                         <h3 class="mb-0">BREAKTHROUGH CHRISTIAN ACADEMY, INC</h3>
                         <small>Quezon City</small>

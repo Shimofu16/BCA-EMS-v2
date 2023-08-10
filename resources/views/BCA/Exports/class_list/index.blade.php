@@ -11,8 +11,8 @@
     {{-- <link rel="stylesheet" href="{{ URL::asset('assets/packages/bootstrap/css/bootstrap.min.css') }}" type="text/css" /> --}}
 
     <!-- custom css -->
-    {{-- <link href="{{ asset('assets/css/pdf.css') }}" rel="stylesheet" type="text/css" /> --}}
-    <link href="./assets/css/pdf.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/pdf.css') }}" rel="stylesheet" type="text/css" />
+    {{-- <link href="/assets/css/pdf.css" rel="stylesheet" type="text/css" /> --}}
 </head>
 
 <body>
@@ -21,8 +21,9 @@
             <thead>
                 <tr>
                     <th>
-                         <img src="./assets/img/BCA-Logo.png" alt="bca logo"
+                        <img src="{{ asset('assets/img/BCA-Logo.png') }}" alt="bca logo"
                             style="height: 60px; width:60px;">
+                            
                     </th>
                     <th class="fw-bold text-center">
                         <h3 class="mb-0">BREAKTHROUGH CHRISTIAN ACADEMY</h3>

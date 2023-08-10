@@ -8,7 +8,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <!-- custom css -->
-    <link href="./assets/css/pdf.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/css/pdf.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -19,7 +19,7 @@
                 <tr>
                     <th class="text-center" colspan="3">
                         <div style="position: relative;">
-                            <img src="./assets/img/BCA-Logo.png" alt="BCA LOGO" class="form-logo"
+                            <img src="{{ asset('assets/img/BCA-Logo.png') }}" alt="bca logo"
                                 style="height: 60px; width:60px; position: absolute; top:11px; left: 10px" />
                             <h3 class="fw-bold">BREAKTHROUGH CHRISTIAN ACADEMY</h3>
                             <span class="fw-normal">9006 Eagle St., Area 3, Sitio Veterans, Brgy. Bagong

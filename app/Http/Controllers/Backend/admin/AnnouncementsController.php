@@ -51,7 +51,7 @@ class AnnouncementsController extends Controller
             $photo = $request->file('photo');
             $extension = $photo->getClientOriginalExtension();
             $title = Str::replace(' ', '-', Str::lower($request->input('title')));
-            $path = 'uploads/announcements/' . Str::replace(' ', '-', Str::lower($request->input('title')));
+            $path = 'uploads/announcements';
             $file_name =  $title . '.' . $extension;
             $photo->storeAs($path, $file_name);
             $level = ($request->input('gl') == "remove") ? null : (($request->input('gl') == null) ? null : (($request->input('gl'))));

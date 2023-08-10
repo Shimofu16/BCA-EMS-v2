@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class FamilyMember extends Model
 {
     use HasFactory;
-    protected $table = 'families';
+    protected $table = 'family_members';
     public $guarded = [];
 }

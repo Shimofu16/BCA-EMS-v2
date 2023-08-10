@@ -138,7 +138,7 @@ class EnrolleeController extends Controller
                         try {
                             $this->createStudentAccount($enrollee, $password);
                             $this->createStudentGrades($enrollee, $request->input('section_id'));
-                            //   $this->sendEmail($enrollee, $password, false);
+                              $this->sendEmail($enrollee, $password, false);
                             $this->updateStudent($id, $request->input('section_id'));
                             $this->enrollmentLog($enrollee->id, $enrollee->sy_id, $enrollee->grade_level_id, $request->input('section_id'));
 
@@ -160,7 +160,7 @@ class EnrolleeController extends Controller
                         $this->createStudentGrades($enrollee, $request->input('section_id'));
                         $this->updateStudent($enrollee->id, $request->input('section_id'));
                         $this->enrollmentLog($enrollee->id, $enrollee->sy_id, $enrollee->grade_level_id, $request->input('section_id'));
-                        // $this->sendEmail($enrollee, $password, $isOld);
+                        $this->sendEmail($enrollee, $password, $isOld);
                         toast()->success('SYSTEM MESSAGE', 'Successfully Enrolled ' . $enrollee->first_name)->autoClose(6000)->width('500px')->animation('animate__fadeInRight', 'animate__fadeOutDown')->timerProgressBar();
                         return redirect()->route('registrar.enrolled.index');
                     } catch (\Throwable $th) {
@@ -176,7 +176,7 @@ class EnrolleeController extends Controller
                             $this->createStudentAccount($enrollee, $password);
                             $this->createStudentGrades($enrollee, $request->input('section_id'));
                             $this->enrollmentLog($enrollee->id, $enrollee->sy_id, $enrollee->grade_level_id, $request->input('section_id'));
-                            //   $this->sendEmail($enrollee, $password, false);
+                              $this->sendEmail($enrollee, $password, false);
                             $this->updateStudent($id, $request->input('section_id'));
                             toast()->success('SYSTEM MESSAGE', 'Successfully Enrolled  ' . $enrollee->first_name)->autoClose(6000)->width('500px')->animation('animate__fadeInRight', 'animate__fadeOutDown')->timerProgressBar();
                             return redirect()->route('registrar.enrolled.index');

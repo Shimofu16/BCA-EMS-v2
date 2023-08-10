@@ -5,13 +5,14 @@ namespace App\Http\Controllers\General;
 use App\Models\Balance;
 use App\Models\Student;
 use Illuminate\Http\Request;
-use App\Mail\Enrollment\Code;
 use App\Models\VerificationCode;
 use App\Mail\Enrollment\Verified;
 use App\Mail\Users\sendAccountInfo;
 use App\Http\Controllers\Controller;
 
 use App\Mail\EnrollmentAccepted;
+use App\Mail\EnrollmentVerificationCode;
+use App\Mail\EnrollmentVerifiedEmail;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Payment\dueDateReminder;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -35,35 +36,18 @@ class MailController extends Controller
                 'name' => $name,
                 'verification_code' => $verification_code
             ];
-            Mail::to($recipient)->send(new Code($data));
+            Mail::to($recipient)->send(new EnrollmentVerificationCode($data));
         } catch (\Throwable $th) {
             dd($th->getMessage());
         }
     }
-    public static function sendDueDateReminderMail()
-    {
-        $balances = Balance::where('reminder_at', '>=', now()->startOfMonth())
-            ->where('reminder_at', '<=', now()->endOfMonth())
-            ->get();
 
-        foreach ($balances as $balance) {
-            $data = [
-                'name' => $balance->student->first_name,
-                'date' => $balance->reminder_at,
-            ];
-            Mail::to($balance->student->email)->send(new dueDateReminder($data));
-        }
-    }
-    public static function sendAccountInfo($recipient, $data)
-    {
-        Mail::to($recipient)->send(new  sendAccountInfo($data));
-    }
     public static function sendVerifiedMail($name, $recipient,)
     {
         $data = [
             'name' => $name,
         ];
-        Mail::to($recipient)->send(new Verified($data));
+        Mail::to($recipient)->send(new EnrollmentVerifiedEmail($data));
     }
     public function verifyStudent(Request $request)
     {
@@ -91,7 +75,7 @@ class MailController extends Controller
         } catch (ModelNotFoundException $th) {
             // If the verification code or student is not found, show an error message
 
-            alert()->error('Error', 'Invalid Verification Code')->footer('<a href="/resend/verification">Resend Verification Code?</a>');
+            alert()->error('Error', 'Invalid Verification Code');
             return redirect()->route('enroll.index');
         }
     }
@@ -110,7 +94,7 @@ class MailController extends Controller
                     'date_sent' => now(),
                     'expiration_date' => now()->addDay(3),
                 ]);
-                MailController::sendVerificationCodeMail($student->first_name, $student->email, $code);
+                $this->sendVerificationCodeMail($student->first_name, $student->email, $code);
                 alert()->success('Success', 'Verification code successfully sent to your Email')->autoClose(5000);
             } else {
                 alert()->info('Information', 'Your Email is already verified')->autoClose(5000);

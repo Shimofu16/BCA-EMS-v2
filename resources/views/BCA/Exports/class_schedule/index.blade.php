@@ -11,8 +11,8 @@
     {{-- <link rel="stylesheet" href="{{ URL::asset('assets/packages/bootstrap/css/bootstrap.min.css') }}" type="text/css" /> --}}
 
     <!-- custom css -->
-    {{-- <link href="{{ asset('assets/css/pdf.css') }}" rel="stylesheet" type="text/css" /> --}}
-    <link href="./assets/css/pdf.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/pdf.css') }}" rel="stylesheet" type="text/css" />
+    {{-- <link href="/assets/css/pdf.css" rel="stylesheet" type="text/css" /> --}}
 </head>
 
 <body>

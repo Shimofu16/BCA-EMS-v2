@@ -22,7 +22,7 @@ class AddPhoto extends Component
         ]);
         try {
             $title = Str::replace(' ', '-', Str::lower($this->title));
-            $path = 'uploads/gallery/' . $title;
+            $path = 'uploads/gallery';
             $photo = $this->photos[0];
             $filename = $title . '-.' . $photo->getClientOriginalExtension();
             $photo->storeAs($path, $filename);

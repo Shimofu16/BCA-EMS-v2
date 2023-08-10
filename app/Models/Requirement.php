@@ -9,6 +9,7 @@ class Requirement extends Model
 {
     use HasFactory;
     public $guarded = [];
+    
     public function student()
     {
         return $this->belongsTo(Student::class, 'student_id');

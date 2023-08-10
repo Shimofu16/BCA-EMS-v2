@@ -1,5 +1,19 @@
 @extends('BCA.Frontend.pages.portal.index')
 
+@section('styles')
+    <style>
+        @media only screen and (max-width: 600px) {
+            /* styles for mobile devices */
+            .d-mo-none {
+                display: none;
+            }
+            .p-mo-3{
+                padding: 2rem;
+            }
+        }
+    </style>
+@endsection
+
 @section('title')
     @if (Request::is('portals/*'))
         {{ Str::ucfirst($role) }} Portal
@@ -11,8 +25,8 @@
 @endsection
 @section('forms')
     @if (Request::routeIs('portals.index'))
-        <div class="row justify-content-center align-items-center mt-5 p-5">
-            <div class="col-md-10">
+        <div class="row justify-content-center align-items-center mt-5 p-mo-3 p-md-5">
+            <div class="col-md-10 col-lg-7">
                 <div class="card p-3 rounded-5 glass">
                     <div
                         class="card-header bg-transparent border-bottom-0 d-flex align-items-center justify-content-center  flex-column">
@@ -20,25 +34,22 @@
                         <h3>
                             Gateway Hub
                         </h3>
-                        <h5 class="fw-medium text-center">A Centralized Portals for Admin, Cashier, Registrar,
+                        <h5 class="fw-medium text-center d-mo-none">A Centralized Portals for Admin, Cashier, Registrar,
                             Students, and
                             Teachers</h5>
                     </div>
                     <div class="card-body pb-2">
-                        {{-- generate a cards for Admin, Cashier, Registrar,
-                                Students, and
-                                Teachers in one row --}}
                         <div class="row justify-content-center align-items-center gap-2">
                             @foreach ($roles as $role)
                                 @if ($role->name !== 'Parent')
-                                    <div class="col-md-3">
+                                    <div class="col-sm-auto col-md-3">
                                         <a href="{{ route('portals.show', ['role' => $role->name]) }}"
                                             class="text-decoration-none text-dark">
-                                            <div class="card p-3 rounded-5 glass ctm-hvr-sweep-to-right">
+                                            <div class="card p-md-3 rounded-5 glass ctm-hvr-sweep-to-right">
                                                 <div
                                                     class="card-header bg-transparent border-bottom-0 d-flex align-items-center justify-content-center  flex-column">
-                                                    <h1>{{ Str::ucfirst(Str::substr($role->name, 0, 1)) }}</h1>
-                                                    <h5 class="fw-light text-center fw-800">{{ Str::ucfirst($role->name) }}
+                                                    <h1 class="d-mo-none">{{ Str::ucfirst(Str::substr($role->name, 0, 1)) }}</h1>
+                                                    <h5 class="fw-light text-center fw-800 mb-0">{{ Str::ucfirst($role->name) }}
                                                     </h5>
                                                 </div>
                                             </div>
@@ -47,11 +58,6 @@
                                 @endif
                             @endforeach
                         </div>
-                    </div>
-                    <div
-                        class="card-footer bg-transparent border-top-0 d-flex align-items-center justify-content-center flex-column mb-5">
-
-
                     </div>
                 </div>
             </div>
@@ -72,8 +78,7 @@
                         </div>
                         <div class="card-body pb-1">
                             <div class="form-floating mb-2">
-                                <input type="email"
-                                    class="form-control  @error('email') is-invalid @enderror"
+                                <input type="email" class="form-control  @error('email') is-invalid @enderror"
                                     id="email" placeholder="name@example.com" name="email">
                                 <label for="email">
                                     Email address

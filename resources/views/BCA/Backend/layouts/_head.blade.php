@@ -9,13 +9,13 @@
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
     <!-- Package Styles-->
-    <link href="/assets/packages/fontawesome-free-6.2.0-web/css/all.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="/assets/packages/hover-css/hover.css" />
-    <link href="/assets/packages/Datatables/datatables.min.css" rel="stylesheet">
-    <link href="/assets/packages/sb-admin/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="{{ asset('assets/packages/fontawesome-free-6.2.0-web/css/all.css') }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets/packages/hover-css/hover.css') }}" />
+    <link href="{{ asset('assets/packages/DataTables/datatables.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/packages/sb-admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
     @livewireStyles
     <!-- Custom styles-->
-    <link href="/assets/css/sb-admin/custom.css" rel="stylesheet">
+    <link href="{{ asset('assets/css/sb-admin/custom.css') }}" rel="stylesheet">
     <style>
         .dropdown-item-active {
             background-color: #4e73df;
@@ -29,7 +29,7 @@
     </style>
     @yield('dashboard-css')
     {{-- school logo --}}
-    <link rel="icon" href="/assets/img/BCA-Logo.png">
+    <link rel="icon" href="{{ asset('assets/img/BCA-Logo.png') }}">
     @livewireStyles
     @livewireScripts
 </head>

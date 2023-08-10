@@ -6,7 +6,7 @@ namespace App\Http\Controllers\General;
 use App\Http\Controllers\Controller;
 use App\Models\Schedule;
 use App\Models\Grade;
-use App\Models\requirements as Requirement;
+use App\Models\Requirement;
 use App\Models\SchoolYear;
 use App\Models\Section;
 use App\Models\Student;
@@ -67,8 +67,7 @@ class ExportController extends Controller
     public static function officialClassList()
     {
         try {
-            $students = Student::where('status', '=', 1)
-                ->where('status', '=', 'enrolled')
+            $students = Student::where('status', '=', 'enrolled')
                 ->orderBy('gender', 'DESC')
                 ->orderBy('last_name', 'ASC')
                 ->get();

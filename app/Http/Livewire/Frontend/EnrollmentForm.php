@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Frontend;
 
 use App\Http\Controllers\General\ExportController;
 use App\Http\Controllers\General\FileController;
+use App\Http\Controllers\General\MailController;
 use App\Models\Annual;
 use App\Models\Balance;
 use App\Models\BankAccount;
@@ -729,7 +730,7 @@ class EnrollmentForm extends Component
             $sy = SchoolYear::where('is_active', '=', 1)->first();
 
             try {
-                /* MailController::sendVerificationCodeMail($this->first_name, $recipient, $code); */
+                 MailController::sendVerificationCodeMail($this->first_name, $recipient, $code);
                 $studentID = Student::create([
                     'student_id' => $this->student_id,
                     'student_lrn' => ($this->student_lrn == "") ? null : $this->student_lrn,

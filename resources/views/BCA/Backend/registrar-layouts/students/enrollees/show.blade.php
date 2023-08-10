@@ -5,7 +5,7 @@
 @endsection
 @section('contents')
 
-@livewire('registrar.student.show',
+@livewire('backend.registrar.student-show',
 ['student' => $student,
  'sections' => $sections,
   'father' => $father,

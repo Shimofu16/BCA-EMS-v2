@@ -36,9 +36,10 @@
         -webkit-backdrop-filter: blur(6.1px);
     }
 </style>
+@yield('styles')
 
 <body class="form-bg of-hidden">
-    <div class="form-bg-overlay">
+    <div class="form-bg-overlay of-hidden">
             @yield('forms')
     </div>
     @include('sweetalert::alert')
